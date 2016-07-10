@@ -75,13 +75,10 @@ The 5-minute interval, averaged across days, that contains the highest number of
 
 ```r
 max <- filter(act_avg, mean_steps==max(act_avg$mean_steps))
-max
+max[[1,1]]
 ```
 
-Source: local data frame [1 x 2]
-
-  interval mean_steps
-1      835   206.1698
+[1] 835
 
 ## Imputing missing values
 The number of missing values is:

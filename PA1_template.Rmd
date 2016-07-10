@@ -45,7 +45,7 @@ plot(act_avg$interval, act_avg$mean_steps, type="l", main="Average Daily Activit
 The 5-minute interval, averaged across days, that contains the highest number of steps is:
 ```{r max}
 max <- filter(act_avg, mean_steps==max(act_avg$mean_steps))
-max
+max[[1,1]]
 ```
 
 ## Imputing missing values
