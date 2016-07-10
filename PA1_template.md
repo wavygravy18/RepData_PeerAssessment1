@@ -66,7 +66,7 @@ median(act_totals$total_steps, na.rm=TRUE)
 act_int <- group_by(activity, interval)
 act_avg <- summarize(act_int, mean_steps=mean(steps, na.rm=TRUE))
 plot(act_avg$interval, act_avg$mean_steps, type="l", main="Average Daily Activity Pattern", xlab="5-Minute Interval", 
-ylab="Mean Steps")
+     ylab="Mean Steps")
 ```
 
 ![](PA1_template_files/figure-html/averageactivitypattern-1.png)
@@ -160,9 +160,9 @@ wkdayavg <- summarize(intwkday, mean_steps=mean(steps, na.rm=TRUE))
 wkendavg <- summarize(intwkend, mean_steps=mean(steps, na.rm=TRUE))
 par(mfrow=c(2,1))
 plot(wkdayavg$interval, wkdayavg$mean_steps, type="l", main="Average Weekday Activity Pattern", 
-xlab="5-Minute Interval", ylab="Mean Steps")
+     xlab="5-Minute Interval", ylab="Mean Steps")
 plot(wkendavg$interval, wkendavg$mean_steps, type="l", main="Average Weekend Activity Pattern", 
-xlab="5-Minute Interval", ylab="Mean Steps")
+     xlab="5-Minute Interval", ylab="Mean Steps")
 ```
 
 ![](PA1_template_files/figure-html/weekdaysversusweekends-1.png)
