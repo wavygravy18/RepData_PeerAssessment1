@@ -24,7 +24,7 @@ hist(act_totals$total_steps, main="Total Steps Per Day", xlab="Steps", col=c("re
 ```
 
 Here is the mean total number of steps taken per day.
-```{r mean}
+```{r mean, results='asis'}
 mean(act_totals$total_steps, na.rm=TRUE)
 ```
 
