@@ -5,6 +5,10 @@ output:
     keep_md: true
 ---
 ## Loading and preprocessing the data
+```{r set options, echo=TRUE}
+opts_chunk$set(echo=TRUE)
+```
+
 ```{r read data} 
 activity <- read.csv("activity.csv", colClass=(c("numeric", "Date", "numeric")), na.strings="NA")
 ```
