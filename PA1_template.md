@@ -1,6 +1,7 @@
 # Reproducible Research: Peer Assessment 1
 ## Loading and preprocessing the data
 
+
 ```r
 activity <- read.csv("activity.csv", colClass=(c("numeric", "Date", "numeric")), na.strings="NA")
 ```
@@ -67,7 +68,7 @@ act_avg <- summarize(act_int, mean_steps=mean(steps, na.rm=TRUE))
 plot(act_avg$interval, act_avg$mean_steps, type="l", main="Average Daily Activity Pattern", xlab="5-Minute Interval", ylab="Mean Steps")
 ```
 
-![](PA1_template_files/figure-html/average activity pattern-1.png)
+![](PA1_template_files/figure-html/averageactivitypattern-1.png)
 
 The 5-minute interval, averaged across days, that contains the highest number of steps is:
 
@@ -126,7 +127,7 @@ rep_totals <- summarize(rep_day, total_steps=sum(steps))
 hist(rep_totals$total_steps, main="Total Steps Per Day (NAs replaced)", xlab="Steps", col=c("darkblue"))
 ```
 
-![](PA1_template_files/figure-html/NAs replaced historgram-1.png)
+![](PA1_template_files/figure-html/NAsreplaced historgram-1.png)
 
 Here is the mean total number of steps taken per day with the missing values filled in.
 
@@ -165,8 +166,8 @@ intwkend <- group_by(wkend, interval)
 wkdayavg <- summarize(intwkday, mean_steps=mean(steps, na.rm=TRUE))
 wkendavg <- summarize(intwkend, mean_steps=mean(steps, na.rm=TRUE))
 par(mfrow=c(2,1))
-plot(wkdayavg$interval, wkdayavg$mean_steps, type="l", main="Average Weekday Activity Pattern", xlab="Interval", ylab="Mean Steps")
-plot(wkendavg$interval, wkendavg$mean_steps, type="l", main="Average Weekend Activity Pattern", xlab="Interval", ylab="Mean Steps")
+plot(wkdayavg$interval, wkdayavg$mean_steps, type="l", main="Average Weekday Activity Pattern", xlab="5-Minute Interval", ylab="Mean Steps")
+plot(wkendavg$interval, wkendavg$mean_steps, type="l", main="Average Weekend Activity Pattern", xlab="5-Minute Interval", ylab="Mean Steps")
 ```
 
-![](PA1_template_files/figure-html/weekdays versus weekends-1.png)
+![](PA1_template_files/figure-html/weekdaysversusweekends-1.png)
