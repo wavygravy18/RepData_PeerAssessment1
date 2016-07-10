@@ -6,7 +6,7 @@ output:
 ---
 ## Loading and preprocessing the data
 ```{r set options, echo=TRUE}
-opts_chunk$set(echo=TRUE)
+opts_chunk$set(echo=TRUE, results="asis")
 ```
 
 ```{r read data} 
