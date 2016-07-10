@@ -5,11 +5,11 @@ output:
     keep_md: true
 ---
 ## Loading and preprocessing the data
-```{r set options, echo=TRUE}
+```{r setoptions, echo=TRUE}
 opts_chunk$set(echo=TRUE, results="asis")
 ```
 
-```{r read data} 
+```{r readdata} 
 activity <- read.csv("activity.csv", colClass=(c("numeric", "Date", "numeric")), na.strings="NA")
 ```
 
@@ -35,27 +35,27 @@ median(act_totals$total_steps, na.rm=TRUE)
 
 ## What is the average daily activity pattern?
 
-```{r average activity pattern} 
+```{r averageactivitypattern} 
 act_int <- group_by(activity, interval)
 act_avg <- summarize(act_int, mean_steps=mean(steps, na.rm=TRUE))
 plot(act_avg$interval, act_avg$mean_steps, type="l", main="Average Daily Activity Pattern", xlab="5-Minute Interval", ylab="Mean Steps")
 ``` 
 
 The 5-minute interval, averaged across days, that contains the highest number of steps is:
-```{r max steps}
+```{r max}
 max <- filter(act_avg, mean_steps==max(act_avg$mean_steps))
 max
 ```
 
 ## Imputing missing values
 The number of missing values is:
-```{r missing values}
+```{r missingvalues}
 sum(is.na(activity$steps))
 ```
 
 
 This code replaces the missing values with the average for each interval.
-```{r replace missing values}
+```{r replacemissingvalues}
 library(data.table)
 impute.mean <- function(x) replace(x, is.na(x), mean(x, na.rm=TRUE))
 setDT(activity)
@@ -63,19 +63,19 @@ replaced <- activity[,steps := impute.mean(steps), by = interval]
 ```
 
 Here is a histogram of the total number of steps per day with the missing values filled in.
-```{r NAs replaced historgram}
+```{r NAsreplaced historgram}
 rep_day <- group_by(replaced, date)
 rep_totals <- summarize(rep_day, total_steps=sum(steps))
 hist(rep_totals$total_steps, main="Total Steps Per Day (NAs replaced)", xlab="Steps", col=c("darkblue"))
 ```
 
 Here is the mean total number of steps taken per day with the missing values filled in.
-```{r replaced meean}
+```{r replacedmeean}
 mean(rep_totals$total_steps)
 ```
 
 Here is the median total number of steps taken per day with the missing values filled in.
-```{r replaced median}
+```{r replacedmedian}
 median(rep_totals$total_steps)
 ```
 
@@ -84,7 +84,7 @@ Yes, replacing the missing values does have an effect on the data. The columns i
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-```{r weekdays versus weekends}
+```{r weekdaysversusweekends}
 Weekdays <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
 activity$day <- factor((weekdays(activity$date) %in% Weekdays), levels=c(FALSE, TRUE), labels=c('weekend', 'weekday'))
 
