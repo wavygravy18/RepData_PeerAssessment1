@@ -32,7 +32,7 @@ median(act_totals$total_steps, na.rm=TRUE)
 
 ## What is the average daily activity pattern?
 
-```{r averageactivitypattern} 
+```{r averageactivitypattern, echo=TRUE} 
 act_int <- group_by(activity, interval)
 act_avg <- summarize(act_int, mean_steps=mean(steps, na.rm=TRUE))
 plot(act_avg$interval, act_avg$mean_steps, type="l", main="Average Daily Activity Pattern", xlab="5-Minute Interval", ylab="Mean Steps")
@@ -81,7 +81,7 @@ Yes, replacing the missing values does have an effect on the data. The columns i
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-```{r weekdaysversusweekends}
+```{r weekdaysversusweekends, echo=TRUE}
 Weekdays <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
 activity$day <- factor((weekdays(activity$date) %in% Weekdays), levels=c(FALSE, TRUE), labels=c('weekend', 'weekday'))
 
